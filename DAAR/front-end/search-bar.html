@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #b2e0df;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .search-container {
+        background: #fff;
+        height: 30px;
+        border-radius: 30px;
+        padding: 10px 20px;
+        display: flex;
+        margin-top: 10%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.8s;
+        width: 60%;
+        margin-left: 20%;
+
+        box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),
+            -4px -4px 6px 0 rgba(116, 125, 136, .2),
+            inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+            inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+    }
+
+    .search-container:hover>.search-input {
+        width: 400px;
+    }
+
+    .search-container .search-input {
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 0px;
+        font-weight: 500;
+        font-size: 16px;
+        transition: 0.8s;
+
+    }
+
+    .search-container .search-btn .fas {
+        color: #5cbdbb;
+    }
+
+
+
+ 
+
+    .ag-courses_box {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+
+        padding: 50px 0;
+    }
+
+    .ag-courses_item {
+        -ms-flex-preferred-size: calc(33.33333% - 30px);
+        flex-basis: calc(33.33333% - 30px);
+
+        margin: 0 15px 30px;
+
+        overflow: hidden;
+
+        border-radius: 28px;
+    }
+
+    .ag-courses-item_link {
+        display: block;
+        padding: 30px 20px;
+        background-color: #121212;
+
+        overflow: hidden;
+
+        position: relative;
+    }
+
+   
+
+    .ag-courses-item_title {
+        min-height: 87px;
+        margin: 0 0 25px;
+
+        overflow: hidden;
+
+        font-weight: bold;
+        font-size: 30px;
+        color: #FFF;
+
+        z-index: 2;
+        position: relative;
+    }
+
+    .ag-courses-item_date-box {
+        font-size: 18px;
+        color: #FFF;
+
+        z-index: 2;
+        position: relative;
+    }
+
+    .ag-courses-item_date {
+        font-weight: bold;
+        color: #f9b234;
+
+        -webkit-transition: color .5s ease;
+        -o-transition: color .5s ease;
+        transition: color .5s ease
+    }
+
+    .ag-courses-item_bg {
+        height: 128px;
+        width: 128px;
+        background-color: #f9b234;
+
+        z-index: 1;
+        position: absolute;
+        top: -75px;
+        right: -75px;
+
+        border-radius: 50%;
+
+        -webkit-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+
+    .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+        background-color: #3ecd5e;
+    }
+
+    .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+        background-color: #e44002;
+    }
+
+    .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+        background-color: #952aff;
+    }
+
+    .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+        background-color: #cd3e94;
+    }
+
+    .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+        background-color: #4c49ea;
+    }
+
+
+
+    @media only screen and (max-width: 979px) {
+        .ag-courses_item {
+            -ms-flex-preferred-size: calc(50% - 30px);
+            flex-basis: calc(50% - 30px);
+        }
+
+        .ag-courses-item_title {
+            font-size: 24px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .ag-format-container {
+            width: 96%;
+        }
+
+    }
+
+    @media only screen and (max-width: 639px) {
+        .ag-courses_item {
+            -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+        }
+
+        .ag-courses-item_title {
+            min-height: 72px;
+            line-height: 1;
+
+            font-size: 24px;
+        }
+
+        .ag-courses-item_link {
+            padding: 22px 40px;
+        }
+
+        .ag-courses-item_date-box {
+            font-size: 16px;
+        }
+    }
+
+
+    h2 {
+        margin: 0;
+        font-size: 1.4rem;
+    }
+
+    @media (min-width: 50em) {
+        h2 {
+            font-size: 1.8rem;
+        }
+    }
+
+    .cta {
+        --shadowColor: 187 60% 40%;
+
+        background: hsl(187 70% 85%);
+        max-width: 50rem;
+        width: 100%;
+        box-shadow: 0.65rem 0.65rem 0 hsl(var(--shadowColor) / 1);
+        border-radius: 0.8rem;
+        overflow: hidden;
+        border: 0.5rem solid;
+        margin-left: 1%;
+    }
+
+    .cta img {
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        flex: 1 1 300px;
+        outline: 0.5rem solid;
+    }
+
+    .cta__text-column {
+        padding: min(2rem, 5vw) min(2rem, 5vw) min(2.5rem, 5vw);
+        flex: 1 0 50%;
+    }
+
+    .cta__text-column>*+* {
+        margin: min(1.5rem, 2.5vw) 0 0 0;
+    }
+
+    .cta a {
+        display: inline-block;
+        color: black;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        background: hsl(187 75% 64%);
+        border-radius: 0.6rem;
+        font-weight: 700;
+        border: 0.35rem solid;
+    }
+
+    #response {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 23%;
+        width: 70%;
+        /* You can adjust this based on your preference */
+    }
+
+    .cta {
+        width: 100%;
+        /* Adjust the width to create the desired number of columns */
+        margin-bottom: 20px;
+        /* Adjust the margin based on your preference */
+    }
+
+    .occu {
+        /* Styles for the .occu class go here */
+        color: blue;
+        font-size: 16px;
+        /* Add more styles as needed */
+    }
+
+    .author {
+        /* Styles for the .author class go here */
+        font-weight: bold;
+        text-decoration: underline;
+        /* Add more styles as needed */
+    }
+    .chercher{
+        text-align: center;
+    }
+
+    .lang {
+        /* Styles for the .lang class go here */
+        font-style: italic;
+        color: green;
+        /* Add more styles as needed */
+    }
+</style>
+
+<head>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./book.js"></script>
+</head>
+
+<body>
+    <div class="search-container">
+        <select class="custom-select" id="searchType">
+            <option value="1">Regex</option>
+            <option value="2">mot clé</option>
+            <!-- Add more options as needed -->
+        </select>
+        <input type="text" id="search" name="search" placeholder="Search..." class="search-input">
+        <a href="#" class="search-btn" onclick="search()">
+            <i class="fas fa-search" onclick="search()"></i>
+        </a>
+
+    </div>
+    <br>
+    <h2 id="chercher" class="chercher"></h2>
+
+    <br>
+    <div id="response">
+  
+
+
+
+    </div>
+
+
+</body>
+
+</html>
